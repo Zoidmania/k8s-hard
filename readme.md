@@ -4,7 +4,10 @@ My attempt following https://github.com/kelseyhightower/kubernetes-the-hard-way.
 
 ## Host
 
-I'm virtualizing all of this with Bruce, my Threadripper workstation.
+I'm virtualizing all of this with Bruce, my homelab Threadripper workstation.
+It's also an exercise working with Qemu; I've known about it for a while but
+never spent any time working with it since I've had access to Proxmox or
+Hyper-V at $WORK.
 
 ```
 $ neofetch
