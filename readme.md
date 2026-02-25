@@ -62,12 +62,12 @@ After a reboot, I was able to run Virtual Machine Manager.
 
 This course expects 4 VMs. I created them like so:
 
-| VM Name          | Hostname | Description            | CPU | RAM   | Storage | NIC         |
-|------------------|----------|------------------------|-----|-------|---------|-------------|
-| k8s-hard-jumpbox | jumpbox  | Administration host    | 2   | 2GB   | 20GB    | Bridge mode |
-| k8s-hard-server  | server   | Kubernetes server      | 2   | 2GB   | 20GB    | Bridge mode |
-| k8s-hard-node-0  | node-0   | Kubernetes worker node | 2   | 2GB   | 20GB    | Bridge mode |
-| k8s-hard-node-1  | node-1   | Kubernetes worker node | 2   | 2GB   | 20GB    | Bridge mode |
+| VM Name          | Hostname | Description            | CPU | RAM   | Storage | NIC Type | NIC Name | Address        |
+|------------------|----------|------------------------|-----|-------|---------|----------|----------|----------------|
+| k8s-hard-jumpbox | jumpbox  | Administration host    | 2   | 2GB   | 20GB    | Bridge   | virbr0   | 192.168.122.10 |
+| k8s-hard-server  | server   | Kubernetes server      | 2   | 2GB   | 20GB    | Bridge   | virbr0   | 192.168.122.11 |
+| k8s-hard-node-0  | node-0   | Kubernetes worker node | 2   | 2GB   | 20GB    | Bridge   | virbr0   | 192.168.122.12 |
+| k8s-hard-node-1  | node-1   | Kubernetes worker node | 2   | 2GB   | 20GB    | Bridge   | virbr0   | 192.168.122.13 |
 
 I installed Debian 12 on each one like so:
 
@@ -83,6 +83,23 @@ I installed Debian 12 on each one like so:
 
 After the VMs boot, remove the `cdrom://` target from `/etc/apt/sources.list` on all machines.
 
-I collected the IPs that libvirt assigned to each guest and created the ssh config included in this
-repo. I installed my public key in the `root` user on all guests so I wouldn't have to use the
-console GUI for each node.
+I defined static IPs on the network created by the bridge interface in each VM's
+`/etc/network/interfaces` like so:
+
+```
+allow-hotplug enp1s0
+iface enp1s0 inet static
+    address 192.168.122.10
+    netmask 255.255.255.0
+    network 192.168.122.0
+    broadcast 192.168.122.255
+    gateway 192.168.122.1
+```
+
+I then created the ssh config included in this repo using these IPs. I installed my public key in
+the `root` user on all guests so I wouldn't have to use the Virtual Machine Manager console for each
+node. That lets me use my clipboard and the like from the host.
+
+> [!NOTE]
+> TIL that Linux interface names are limited to 15 characters. I had to rename the bridge interface
+> on the host to `virbr0` so the VMs could start.
