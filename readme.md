@@ -62,12 +62,12 @@ After a reboot, I was able to run Virtual Machine Manager.
 
 This course expects 4 VMs. I created them like so:
 
-| VM Name          | Hostname | Description            | CPU | RAM   | Storage |
-|------------------|----------|------------------------|-----|-------|---------|
-| k8s-hard-jumpbox | jumpbox  | Administration host    | 2   | 2GB   | 20GB    |
-| k8s-hard-server  | server   | Kubernetes server      | 2   | 2GB   | 20GB    |
-| k8s-hard-node-0  | node-0   | Kubernetes worker node | 2   | 2GB   | 20GB    |
-| k8s-hard-node-1  | node-1   | Kubernetes worker node | 2   | 2GB   | 20GB    |
+| VM Name          | Hostname | Description            | CPU | RAM   | Storage | NIC         |
+|------------------|----------|------------------------|-----|-------|---------|-------------|
+| k8s-hard-jumpbox | jumpbox  | Administration host    | 2   | 2GB   | 20GB    | Bridge mode |
+| k8s-hard-server  | server   | Kubernetes server      | 2   | 2GB   | 20GB    | Bridge mode |
+| k8s-hard-node-0  | node-0   | Kubernetes worker node | 2   | 2GB   | 20GB    | Bridge mode |
+| k8s-hard-node-1  | node-1   | Kubernetes worker node | 2   | 2GB   | 20GB    | Bridge mode |
 
 I installed Debian 12 on each one like so:
 
@@ -82,3 +82,4 @@ I installed Debian 12 on each one like so:
 - use default debian mirror in the US
 
 After the VMs boot, remove the `cdrom://` target from `/etc/apt/sources.list` on all machines.
+
