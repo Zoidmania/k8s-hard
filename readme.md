@@ -72,7 +72,11 @@ This course expects 4 VMs. I created them like so:
 I installed Debian 12 on each one like so:
 
 - VM disk stored at `/data/qemu-vms/<vm-name>`
+- domain `k8s-hard.local`
+- no root password
+- user `user`, password `password`
+- Eastern/US timezone
 - standard simple partitioning scheme
 - grub installed on root disk
-- no desktop environment, system utilities only
+- no desktop environment or GNOME, select SSH server and system utilities
 - use default debian mirror in the US
