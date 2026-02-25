@@ -83,3 +83,6 @@ I installed Debian 12 on each one like so:
 
 After the VMs boot, remove the `cdrom://` target from `/etc/apt/sources.list` on all machines.
 
+I collected the IPs that libvirt assigned to each guest and created the ssh config included in this
+repo. I installed my public key in the `root` user on all guests so I wouldn't have to use the
+console GUI for each node.
