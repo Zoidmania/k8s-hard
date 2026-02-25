@@ -2,7 +2,7 @@
 
 My attempt following https://github.com/kelseyhightower/kubernetes-the-hard-way.
 
-## Host
+# Host
 
 I'm virtualizing all of this with Bruce, my homelab Threadripper workstation.
 It's also an exercise working with Qemu; I've known about it for a while but
@@ -58,7 +58,7 @@ sudo usermod -aG kvm zoid
 
 After a reboot, I was able to run Virtual Machine Manager.
 
-## VMs
+# VM Init
 
 This course expects 4 VMs. I created them like so:
 
@@ -103,3 +103,61 @@ node. That lets me use my clipboard and the like from the host.
 > [!NOTE]
 > TIL that Linux interface names are limited to 15 characters. I had to rename the bridge interface
 > on the host to `virbr0` so the VMs could start.
+
+# Jumpbox Setup
+
+Followed https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/02-jumpbox.md.
+This resulted in the following:
+
+```
+root@jumpbox:~/kubernetes-the-hard-way# tree downloads
+downloads
+├── client
+│   ├── etcdctl
+│   └── kubectl
+├── cni-plugins
+│   ├── bandwidth
+│   ├── bridge
+│   ├── dhcp
+│   ├── dummy
+│   ├── firewall
+│   ├── host-device
+│   ├── host-local
+│   ├── ipvlan
+│   ├── LICENSE
+│   ├── loopback
+│   ├── macvlan
+│   ├── portmap
+│   ├── ptp
+│   ├── README.md
+│   ├── sbr
+│   ├── static
+│   ├── tap
+│   ├── tuning
+│   ├── vlan
+│   └── vrf
+├── controller
+│   ├── etcd
+│   ├── kube-apiserver
+│   ├── kube-controller-manager
+│   └── kube-scheduler
+├── downloads
+│   ├── client
+│   ├── cni-plugins
+│   ├── controller
+│   └── worker
+└── worker
+    ├── containerd
+    ├── containerd-shim-runc-v2
+    ├── containerd-stress
+    ├── crictl
+    ├── ctr
+    ├── kubelet
+    ├── kube-proxy
+    └── runc
+
+10 directories, 34 files
+root@jumpbox:~/kubernetes-the-hard-way# kubectl version --client
+Client Version: v1.32.3
+Kustomize Version: v5.5.0
+```
