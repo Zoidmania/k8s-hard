@@ -1,6 +1,8 @@
 # K8s the Hard Way
 
-My attempt following https://github.com/kelseyhightower/kubernetes-the-hard-way.
+My attempt following https://github.com/Zoidmania/kubernetes-the-hard-way (forked from
+https://github.com/kelseyhightower/kubernetes-the-hard-way so the contents are consistent with when
+I executed this project).
 
 # Host
 
@@ -106,7 +108,7 @@ node. That lets me use my clipboard and the like from the host.
 
 # Jumpbox Setup
 
-Followed https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/02-jumpbox.md.
+Followed https://github.com/Zoidmania/kubernetes-the-hard-way/blob/master/docs/02-jumpbox.md.
 This resulted in the following:
 
 ```
@@ -161,3 +163,7 @@ root@jumpbox:~/kubernetes-the-hard-way# kubectl version --client
 Client Version: v1.32.3
 Kustomize Version: v5.5.0
 ```
+
+# Compute Setup
+
+TO DO
