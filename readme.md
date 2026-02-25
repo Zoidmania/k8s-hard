@@ -80,3 +80,5 @@ I installed Debian 12 on each one like so:
 - grub installed on root disk
 - no desktop environment or GNOME, select SSH server and system utilities
 - use default debian mirror in the US
+
+After the VMs boot, remove the `cdrom://` target from `/etc/apt/sources.list` on all machines.
