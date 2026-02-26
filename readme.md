@@ -168,4 +168,10 @@ Kustomize Version: v5.5.0
 
 # Compute Setup
 
-TO DO
+I created the `machines.txt` in this repo as directed. The suggested pod subnets are fine to me, so
+I kept them.
+
+I had already configured SSH access for the `root` user in the above section, so I skipped this
+part.
+
+
