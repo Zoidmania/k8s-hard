@@ -108,6 +108,8 @@ each VM could reach each other VM easily.
 > TIL that Linux interface names are limited to 15 characters. I had to rename the bridge interface
 > on the host to `virbr0` so the VMs could start.
 
+Finally, I updated `/etc/hosts` in each VM so they new the static IP assignments of each other.
+
 # Jumpbox Setup
 
 Followed https://github.com/Zoidmania/kubernetes-the-hard-way/blob/master/docs/02-jumpbox.md.
@@ -174,4 +176,22 @@ I kept them.
 I had already configured SSH access for the `root` user in the above section, so I skipped this
 part.
 
+I had also set the hostnames during VM initialization, so I skipped that part as well. Verification
+worked just fine:
 
+```
+$ while read IP FQDN HOST SUBNET; do
+  ssh -n root@${IP} hostname --fqdn
+done < machines.txt
+
+server.k8s-hard.local
+node0.k8s-hard.local
+node1.k8s-hard.local
+```
+
+Note that `node-0` and `node-1` became `node0` and `node1` in my config, respectively, and that I
+used the domain `k8s-hard.local` instead of `kubernetes.local`. This way I keep myself honest; I
+can't just copy-paste the course invocations and cheat my way through this. I have to edit
+everything for my environment first.
+
+Finally, I had also already updated `/etc/hosts` on each VM.
