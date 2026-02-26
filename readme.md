@@ -201,3 +201,6 @@ Finally, I had also already updated `/etc/hosts` on each VM.
 First, I needed to update the provided `ca.conf` to use the alternate node hostnames and domain
 names I had created. In this repo, the original from the course is in `ca.conf.bak`, and my modified
 one is `ca.conf`.
+
+After that, I followed the module as directed.
+
