@@ -100,7 +100,9 @@ iface enp1s0 inet static
 
 I then created the ssh config included in this repo using these IPs. I installed my public key in
 the `root` user on all guests so I wouldn't have to use the Virtual Machine Manager console for each
-node. That lets me use my clipboard and the like from the host.
+node. That lets me use my clipboard and the like from the host. I also created a new rsa keypair
+that I installed on all four machines (and added to all four machines' `~/.ssh/authorized_keys`) so
+each VM could reach each other VM easily.
 
 > [!NOTE]
 > TIL that Linux interface names are limited to 15 characters. I had to rename the bridge interface
