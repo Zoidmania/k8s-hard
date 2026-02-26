@@ -195,3 +195,9 @@ can't just copy-paste the course invocations and cheat my way through this. I ha
 everything for my environment first.
 
 Finally, I had also already updated `/etc/hosts` on each VM.
+
+# PKI Infrastructure
+
+First, I needed to update the provided `ca.conf` to use the alternate node hostnames and domain
+names I had created. In this repo, the original from the course is in `ca.conf.bak`, and my modified
+one is `ca.conf`.
